@@ -1,0 +1,5 @@
+Robots 3, Spammers 3
+Thieves 1, FC Fraudsters 0
+Robots 1, FC Fraudsters 1
+Thieves 3, Spammers 1
+Robots 4, Grandparents 0
