@@ -64,18 +64,27 @@ object Ranking extends App with LazyLogging {
       }
     }
     logger.debug(scores.toString)
-    val ns = scores.toSeq.sortBy(_._2).reverse.zipWithIndex
+    val ns = scores.toSeq.groupBy(_._2).toSeq.sortBy(_._1).reverse.flatMap(x => x._2.sortBy(_._1)).zipWithIndex
     logger.debug(ns.toString)
 
     val sb: StringBuilder = new StringBuilder()
 
+    var lastScore = ns.head._1._2
+    var lastRank = 1
     ns.foreach(x
     => {
-      val plural: String = if (x._1._2 != 0) "s"
-      else
-        " "
-      sb.append(s"${x._2 + 1}. ${x._1._1}, ${x._1._2} pt$plural\n")
+      val plural: String =
+        if (x._1._2 != 1) "s"
+        else
+          ""
+      val score = x._1._2
+      val rank = if (score == lastScore) lastRank else x._2 + 1
+      val newLine = if (x._2 < ns.length - 1) "\n" else ""
 
+      sb.append(s"${rank}. ${x._1._1}, ${score} pt$plural$newLine")
+
+      lastScore = score
+      lastRank = rank
     })
     sb.result
   }
