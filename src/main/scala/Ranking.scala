@@ -71,7 +71,7 @@ object Ranking extends App with LazyLogging {
 
     ns.foreach(x
     => {
-      val plural: String = if (x._1._2 > 0) "s"
+      val plural: String = if (x._1._2 != 0) "s"
       else
         " "
       sb.append(s"${x._2 + 1}. ${x._1._1}, ${x._1._2} pt$plural\n")
