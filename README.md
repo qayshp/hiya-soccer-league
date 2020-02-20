@@ -1,3 +1,5 @@
+![Scala CI](https://github.com/qayshp/hiya-soccer-league/workflows/Scala%20CI/badge.svg?branch=master)
+
 # Soccer League Ranker
 
 Doing this as a code sample for Hiya.
